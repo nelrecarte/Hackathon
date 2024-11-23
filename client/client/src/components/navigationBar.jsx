@@ -106,7 +106,7 @@ const NavigationBar = () => {
                 <Link to="/Ver-Empleados">Ver Empleados</Link>
                 </Menu.Item>
               <Menu.Item key='5'>
-              <Link to="/Pagar">Pagar Empleados</Link>
+              <Link to="/Seleccionar-Pago">Pagar Empleados</Link>
                 </Menu.Item>
             </SubMenu>
           </Menu>

@@ -7,6 +7,7 @@ import Deducciones from './pages/Deducciones';
 import Pagar from './pages/Pagar';
 import ConfigurarCiclo from './pages/ConfigurarCiclo';
 import VerEmpleados from './pages/VerEmpleados';
+import SeleccionarPago from './pages/SeleccionarPago';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/deducciones" element={<Deducciones />} />
         <Route path="/agregar-empleado" element={<AgregarEmpleado />} />
         <Route path="/Pagar" element={<Pagar />} />
+        <Route path="/Seleccionar-Pago" element={<SeleccionarPago />} />
         <Route path="/Ver-Empleados" element={<VerEmpleados />} />
         <Route path="/" element={<Login />} />
       </Routes>
