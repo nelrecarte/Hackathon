@@ -1,8 +1,19 @@
 import { Select, Button, ConfigProvider } from 'antd';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const { Option } = Select;
 
 const TipoDePago = () => {
+
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+        navigate('/Pagar'); // Replace '/target-page' with your desired route
+    };
+
     return (
         <div style={styles.container}>
             <h2 style={styles.heading}>Seleccione el Tipo de Pago</h2>
@@ -33,7 +44,10 @@ const TipoDePago = () => {
 </ConfigProvider>
 <br/>
             
-            <Button type="primary" style={styles.button}>Let's Go</Button>
+            <Button type="primary" style={styles.button}  onClick={handleButtonClick}>
+            Let's Go
+
+            </Button>
         </div>
     );
 };
