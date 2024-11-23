@@ -1,0 +1,18 @@
+# Node modules
+node_modules/
+
+# Optional: Ignore log files
+*.log
+
+# Optional: Ignore environment variable files
+.env
+
+# Optional: Ignore IDE files
+.vscode/
+.idea/
+
+# Optional: Ignore Mac system files
+.DS_Store
+
+# Optional: Ignore npm-debug logs
+npm-debug.log*
