@@ -5,6 +5,8 @@ const horasTrabajadasRoutes = require('./horasTrabajadasRoutes'); // Adjust path
 const detallesEmpleadoRoutes = require('./detallesEmpleadoRoutes'); // Import the new routes
 const deduccionesRoutes = require('./deduccionesRoutes');
 const empleadoDeduccionRoutes = require('./empleadoDeduccionRoutes');
+const empleadoCicloPlanillaRoutes = require('./empleadoCicloPlanillaRoutes');
+const pagoRoutes = require('./pagoRoutes');
 
 // Use the routes for employee details
 
@@ -16,6 +18,8 @@ router.use('/horas-trabajadas', horasTrabajadasRoutes);
 router.use('/detalles-empleado', detallesEmpleadoRoutes);
 router.use('/deducciones', deduccionesRoutes);
 router.use('/empleado-deducciones', empleadoDeduccionRoutes);
+router.use('/empleado-ciclo-planilla', empleadoCicloPlanillaRoutes);
+router.use('/pagos', pagoRoutes);
 // You can add more routers as needed:
 // router.use('/api/users', userRoutes);
 // router.use('/api/events', eventRoutes);
