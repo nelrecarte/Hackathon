@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import puzzleLogo from '../assets/images/puzzle_logo.png'; // Adjust path based on your folder structure
 
+import CicloPlanillas from '../components/CicloPlanillas';
 const Login = () => {
   const [correo, setCorreo] = useState('');
   const [password, setPassword] = useState('');
