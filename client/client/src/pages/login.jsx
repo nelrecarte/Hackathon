@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import CicloPlanillas from '../components/CicloPlanillas';
 const Login = () => {
     const [correo, setCorreo] = useState('');
     const [password, setPassword] = useState('');
@@ -32,6 +33,8 @@ const Login = () => {
             />
             <br/>
             <button onClick={handleLogin} style={{ padding: '10px 20px', backgroundColor: '#363636', color: '#fff', border: 'none', borderRadius: '4px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)' }}>Login</button>
+            
+            <CicloPlanillas/>
         </div>
     );
 };
