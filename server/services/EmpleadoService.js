@@ -1,22 +1,14 @@
 const Empleado = require('../models/Empleado');
-const bcrypt = require('bcrypt');
-
 
 // Create
 const createEmpleado = async (data) => {
   try {
-    const hashedPassword = await bcrypt.hash(data.password, 10);
-    
-    const empleado = await Empleado.create({
-      ...data,
-      password: hashedPassword 
-    });
-
-    return empleado;
+    return await Empleado.create(data);
   } catch (error) {
     throw new Error(error.message);
   }
 };
+
 // Get all empleados
 const getAllEmpleados = async () => {
   try {

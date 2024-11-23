@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
-const db = require('../db'); 
+const db = require('../db'); // Import the Sequelize instance
 
 const Empleado = db.define('Empleado', {
   id_empleado: {
@@ -35,7 +34,7 @@ const Empleado = db.define('Empleado', {
   },
   correo_empresarial: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   tipo_salario: {
     type: DataTypes.ENUM('mensual', 'por hora'),
@@ -53,14 +52,9 @@ const Empleado = db.define('Empleado', {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW,
   },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false, 
-  },
 }, {
-  tableName: 'empleados', 
-  timestamps: false,
+  tableName: 'empleados', // Optional: Specify table name explicitly
+  timestamps: false, // Disable Sequelize's default createdAt/updatedAt fields
 });
-
 
 module.exports = Empleado;
