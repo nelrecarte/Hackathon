@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
 import { UserOutlined, DownOutlined, ApiOutlined } from '@ant-design/icons';
 import { ConfigProvider } from 'antd';
+import { Link } from 'react-router-dom';
 import logo from '../assets/images/puzzle_logo.png'; // Update the path if needed
 
 const { Sider, Content, Header } = Layout;
@@ -85,8 +86,12 @@ const NavigationBar = () => {
               title='Administracion'
               expandIcon={<DownOutlined />}
             >
-              <Menu.Item key='1'>Ciclos de Planilla</Menu.Item>
-              <Menu.Item key='2'>Deducciones</Menu.Item>
+              <Menu.Item key='1'>
+              <Link to="/ciclos-de-planilla">Ciclos de Planilla</Link>
+                </Menu.Item>
+              <Menu.Item key='2'>
+              <Link to="/deducciones">Deducciones</Link>
+                </Menu.Item>
             </SubMenu>
             <SubMenu
               key='sub2'
@@ -94,8 +99,15 @@ const NavigationBar = () => {
               title='Gestion de Empleados'
               expandIcon={<DownOutlined />}
             >
-              <Menu.Item key='3'>Agregar Empleado</Menu.Item>
-              <Menu.Item key='4'>Ingreso de Horas</Menu.Item>
+              <Menu.Item key='3'>
+              <Link to="/agregar-empleado">Agregar Empleado</Link>
+                </Menu.Item>
+                <Menu.Item key='4'>
+                <Link to="/Ver-Empleados">Ver Empleados</Link>
+                </Menu.Item>
+              <Menu.Item key='5'>
+              <Link to="/Pagar">Pagar Empleados</Link>
+                </Menu.Item>
             </SubMenu>
           </Menu>
         </ConfigProvider>
