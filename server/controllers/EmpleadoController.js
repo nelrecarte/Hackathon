@@ -1,4 +1,4 @@
-const EmpleadoService = require('../services/EmpleadoService');
+const empleadoService = require('../services/EmpleadoService');
 const bcrypt = require('bcrypt');
 const Empleado = require('../models/Empleado');
 const jwt = require('jsonwebtoken');
@@ -34,7 +34,7 @@ const loginEmpleado = async (req, res) => {
 const createEmpleado = async (req, res) => {
     try {
       // Call the createEmpleado service with the request body
-      const empleado = await EmpleadoService.createEmpleado(req.body);
+      const empleado = await empleadoService.createEmpleado(req.body);
   
       // Respond with the created empleado object (or custom response)
       res.status(201).json(empleado);
@@ -43,44 +43,47 @@ const createEmpleado = async (req, res) => {
     }
   };
 
-// Read All
+// Get all employees
 const getAllEmpleados = async (req, res) => {
   try {
-    const empleados = await EmpleadoService.getAllEmpleados();
+    const empleados = await empleadoService.getAllEmpleados();
     res.status(200).json(empleados);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
-// Read One
+// Get a single employee by ID
 const getEmpleadoById = async (req, res) => {
   try {
-    const empleado = await EmpleadoService.getEmpleadoById(req.params.id);
-    if (!empleado) return res.status(404).json({ error: 'Empleado not found' });
+    const id = req.params.id;
+    const empleado = await empleadoService.getEmpleadoById(id);
     res.status(200).json(empleado);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(404).json({ message: error.message });
   }
 };
 
-// Update
+// Update an employee
 const updateEmpleado = async (req, res) => {
   try {
-    const empleado = await EmpleadoService.updateEmpleado(req.params.id, req.body);
-    res.status(200).json(empleado);
+    const id = req.params.id;
+    const data = req.body;
+    const updatedEmpleado = await empleadoService.updateEmpleado(id, data);
+    res.status(200).json(updatedEmpleado);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
-// Delete
+// Delete an employee
 const deleteEmpleado = async (req, res) => {
   try {
-    await EmpleadoService.deleteEmpleado(req.params.id);
-    res.status(204).send();
+    const id = req.params.id;
+    const result = await empleadoService.deleteEmpleado(id);
+    res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(404).json({ message: error.message });
   }
 };
 
@@ -90,5 +93,5 @@ module.exports = {
   getEmpleadoById,
   updateEmpleado,
   deleteEmpleado,
-  loginEmpleado,
+  loginEmpleado
 };

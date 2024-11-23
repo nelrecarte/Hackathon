@@ -17,44 +17,54 @@ const createEmpleado = async (data) => {
     throw new Error(error.message);
   }
 };
-// Get all empleados
+// Get all employees
 const getAllEmpleados = async () => {
   try {
-    return await Empleado.findAll();
+    const empleados = await Empleado.findAll();
+    return empleados;
   } catch (error) {
-    console.log(error);
-    throw new Error(error.message);
+    throw error;
   }
 };
 
-// Get empleado by ID
+// Get a single employee by ID
 const getEmpleadoById = async (id) => {
   try {
-    return await Empleado.findByPk(id);
+    const empleado = await Empleado.findByPk(id);
+    if (!empleado) {
+      throw new Error('Empleado not found');
+    }
+    return empleado;
   } catch (error) {
-    throw new Error(error.message);
+    throw error;
   }
 };
 
-// Update empleado
+// Update an employee
 const updateEmpleado = async (id, data) => {
   try {
     const empleado = await Empleado.findByPk(id);
-    if (!empleado) throw new Error('Empleado not found');
-    return await empleado.update(data);
+    if (!empleado) {
+      throw new Error('Empleado not found');
+    }
+    await empleado.update(data);
+    return empleado;
   } catch (error) {
-    throw new Error(error.message);
+    throw error;
   }
 };
 
-// Delete empleado
+// Delete an employee
 const deleteEmpleado = async (id) => {
   try {
     const empleado = await Empleado.findByPk(id);
-    if (!empleado) throw new Error('Empleado not found');
+    if (!empleado) {
+      throw new Error('Empleado not found');
+    }
     await empleado.destroy();
+    return { message: 'Empleado deleted successfully' };
   } catch (error) {
-    throw new Error(error.message);
+    throw error;
   }
 };
 

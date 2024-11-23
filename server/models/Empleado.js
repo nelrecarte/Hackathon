@@ -1,16 +1,16 @@
 const { DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
-const db = require('../db'); 
+const db = require('../db'); // Adjust the path if needed
 
 const Empleado = db.define('Empleado', {
   id_empleado: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
+    allowNull: false,
   },
   codigo: {
     type: DataTypes.STRING,
-    unique: true,
+    unique: true, // Ensure unique codes
     allowNull: false,
   },
   nombre: {
@@ -31,10 +31,12 @@ const Empleado = db.define('Empleado', {
   },
   correo_personal: {
     type: DataTypes.STRING,
+    unique: true, // Ensure unique personal email
     allowNull: false,
   },
   correo_empresarial: {
     type: DataTypes.STRING,
+    unique: true, // Ensure unique business email
     allowNull: false,
   },
   tipo_salario: {
@@ -49,18 +51,17 @@ const Empleado = db.define('Empleado', {
     type: DataTypes.ENUM('admin', 'usuario_planilla', 'empleado'),
     allowNull: false,
   },
-  created_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
+  payRate: {
+    type: DataTypes.DOUBLE,
+    allowNull: false,
   },
   password: {
     type: DataTypes.STRING,
-    allowNull: false, 
+    allowNull: false,
   },
 }, {
-  tableName: 'empleados', 
+  tableName: 'empleados', // Explicitly set table name
   timestamps: false,
 });
-
 
 module.exports = Empleado;
